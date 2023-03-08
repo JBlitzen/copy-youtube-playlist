@@ -73,7 +73,17 @@ Firefox's console will show you a syntax highlighted list of 100 nodes, which yo
 
 process_next_video clicks the yt-icon-button for one of those rows, which you can verify pretty easily.
 
-To test later functions in the sequence, just manually emulate the steps the code would have done to that point, thus clicking the button, or clicking "Save to Playlist".
+To test later functions in the sequence, just manually emulate the steps the code would have done to that point, thus clicking the button, or clicking "Save to Playlist", and then testing the new query call in the console.
+
+So to test the last call, in click_playlist:
+
+    document.querySelectorAll(".ytd-popup-container > #playlists > ytd-playlist-add-to-option-renderer > tp-yt-paper-checkbox yt-formatted-string.checkbox-height");
+
+First click the options icon button for one of the videos shown on the page, then click Save to Playlist, then add a variable assignment to that call and run it this way in console:
+
+    x = document.querySelectorAll(".ytd-popup-container > #playlists > ytd-playlist-add-to-option-renderer > tp-yt-paper-checkbox yt-formatted-string.checkbox-height");
+
+It should return a list of each playlist name's text node.  The script finds one that matches *playlist_to_add_to* and then jumps up a few parentNode's to select the row it's in so it can find the checkbox in that row.
 
 # Troubleshooting
 Youtube periodically updates their DOM a little, which may break this code since it tries to identify page elements without a lot of help from the page itself.  Any errors are probably the result of a changed DOM, and you can let me know or try to fix it yourself, I'll happily pull any such fixes into this repo or you can copy it to a new one.  MIT license so feel free.
