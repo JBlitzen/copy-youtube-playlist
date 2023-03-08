@@ -1,5 +1,5 @@
 # Copy Youtube Playlist
-Need to copy parts or all of a Youtube playlist?
+Need to copy parts or all of any Youtube playlist to another playlist of your own?
 
 Here's a simple script to do so.
 
