@@ -1,7 +1,7 @@
 # Copy Youtube Playlist
 Need to copy parts or all of any Youtube playlist to another playlist of your own?
 
-Here's a simple script to do so on your own, without having to trust a third party service or provide account credentials or such.
+Here's a simple script to do so on your own, without having to trust a third party service or provide account credentials or be limited to 200 videos a day or whatever.
 
 # Usage
 First, save "copy_youtube_playlist.js" locally.  Do not run it locally, it won't do anything.  But open it in a code or text editor and adjust the settings listed in the next section below.  Also review the code to ensure it's not malicious.  Consult the **Safety** section down below for instructions.
