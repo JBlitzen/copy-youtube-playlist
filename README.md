@@ -1,7 +1,7 @@
 # Copy Youtube Playlist
 Need to copy parts or all of any Youtube playlist to another playlist of your own?
 
-Here's a simple script to do so.
+Here's a simple script to do so on your own, without having to trust a third party service or provide account credentials or such.
 
 # Usage
 First, save "copy_youtube_playlist.js" locally.  Do not run it locally, it won't do anything.  But open it in a code or text editor and adjust the settings listed in the next section below.  Also review the code to ensure it's not malicious.  Consult the **Safety** section down below for instructions.
@@ -48,7 +48,7 @@ In "click_playlist", it looks for each checkbox shown on the resulting popup, an
 
 In "close_backdrop", it closes the popups by clicking the backdrop, then it increments the current video row and calls the "process_next_video" again.
 
-There may be an automated API to perform all this, but I haven't heard of one.
+There's an automated API that could do all this, but I really wanted an in-browser method that could be safely distributed, work a little easier, and allow more visual control.  I believe the API would also be capped at 200 video moves per day.
 
 # Tweaks
 If you'd like to remove videos instead, or otherwise change the exact behavior of clicking, you can tweak the logic in "click_playlist" around the "playlist_row.click()" line.  I originally clicked the checkbox no matter what, which of course UNCHECKED the box if it was already checked, removing the video.  This might be desired in some cases.
