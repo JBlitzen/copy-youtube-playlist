@@ -27,14 +27,14 @@ The script has four configuration variables at the top:
 
 *video_to_end_at* - This is the sequential number of the video you want to stop at, in the order they appear on the SOURCE page.  0 to copy every visible video on the page.  RECOMMENDED that you set this to 2 or 3 to test with until you're comfortable with how the script works and the order it does things in.  You can just manually remove the videos again to test again.
 
-*step_interval* - RECOMMENDED that you leave this at 400.  That's about as fast as I can run this script reliably without Youtube responding a little too slowly and causing an error.
+*step_interval* - RECOMMENDED that you leave this at 400.  That's the number of milliseconds the script waits after any click to give Youtube time to respond.  That's about as fast as I can run the script reliably without Youtube responding a little too slowly and causing an error.  
 
 # How it works
-The script really does emulate the process of manually opening the Save to Playlist option for each video row and clicking the checkbox for the playlist to save to if it's not already clicked.
+The script really does emulate the process of manually opening options for each video shown on the page, clicking the Save to Playlist option on that popup, finding the playlist we want to add it to, and clicking the checkbox for that playlist if it's not already clicked.
 
-It does this by using queries against Youtube's DOM to find the various rows and buttons involved and click them in the right order.
+The script does this by using queries against Youtube's DOM to find the various rows and buttons involved and then clicking them in the right order.
 
-The half second time each video takes is because the script is giving Youtube time to respond to each new click and operation.
+The couple second time each video takes is because the script is giving Youtube time to respond to each new click and operation.
 
 Specifically:
 
@@ -57,9 +57,9 @@ If you'd like to remove videos instead, or otherwise change the exact behavior o
 # Safety
 Please have this code reviewed by a Javascript programmer before you use it.  I assure you it's harmless and won't do anything malicious, but you should not trust me or any other code author.  The way this script works could conceivably allow it to execute malicious operations against your Youtube account.  And it's difficult without programming knowledge to verify that it's not doing so because there's no human readable way to reference elements on the Youtube page.
 
-For programmers, the biggest safety risk is that I'm using arcane selectors in "querySelectorAll" calls.
+For programmers, the biggest safety risk is that I'm using arcane selectors in "querySelectorAll" calls, which might be concealing references to other elements on the page, like account details.
 
-Those are passive calls so they're pretty easy to test.  You can just take the call in isolation and run it in the console with a variable assignment to see which nodes it's targeting.
+Those are passive calls so they're pretty easy to test.  You can mostly just take each call in isolation and run it in the console with a variable assignment to verify exactly which nodes it's targeting.
 
 For instance, the script uses this call to select all videos:
 
@@ -69,7 +69,7 @@ If you run it with a simple variable assignment like this:
 
     x = document.querySelectorAll('ytd-playlist-video-renderer.ytd-playlist-video-list-renderer');
 
-Firefox's console will show you a syntax highlighted list of 100 nodes, which you can mouseover in the console to highlight each row in order and see it's not picking up any account related nodes or anything else.
+Firefox's console will show you a syntax highlighted list of nodes, one for each video visible on the page, which you can mouseover in the console to highlight each row in order and see that they are exactly the nodes they should be.
 
 process_next_video clicks the yt-icon-button for one of those rows, which you can verify pretty easily.
 
