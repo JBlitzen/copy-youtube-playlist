@@ -16,7 +16,9 @@ So if the DESTINATION is set to add videos to the top of the playlist, this scri
 
 Then, in the SOURCE playlist tab, hit F12 to open debugging tools and open the Console.  Copy paste the entire contents of "copy_youtube_playlist.js" into the console, and hit enter.  This will paste fine even though it's quite a few lines.
 
-Then wait while it runs.  If there are no errors, it will copy one video about every half a second.  Any faster and Youtube may not respond fast enough to its instructions.
+Then wait while it runs.  If there are no errors, it will copy one video every couple seconds.  Any faster and Youtube may not respond fast enough to its instructions.
+
+It does NOT update tabs that have the DESTINATION playlist open.  You'll need to reload those tabs to see the new additions.
 
 # Settings
 The script has four configuration variables at the top:
